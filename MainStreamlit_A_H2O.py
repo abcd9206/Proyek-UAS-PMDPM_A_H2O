@@ -9,7 +9,7 @@ class_names = ["JamurKuping", "JamurReishi", "JamurShitake"]
 
 def classify_image(image_path):
     try:
-        input_image = tf.keras.utils.load_img(image_path, target_size=(224, 224))
+        input_image = tf.keras.utils.load_img(image_path, target_size=(180, 180))
         input_image_array = tf.keras.utils.img_to_array(input_image)
         input_image_exp_dim = tf.expand_dims(input_image_array, 0)
 
