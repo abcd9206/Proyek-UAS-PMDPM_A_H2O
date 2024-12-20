@@ -4,12 +4,12 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-model = load_model(r"D:\Kuliah\SEMESTER 5\ML\UAS\sdndsad\Proyek-UAS-PMDPM_A_H2O\BestModel_GoogleNet_H2O.h5")
+model = load_model(r'BestModel_GoogleNet_H2O.h5')
 class_names = ["JamurKuping", "JamurReishi", "JamurShitake"]
 
 def classify_image(image_path):
     try:
-        input_image = tf.keras.utils.load_img(image_path, target_size=(180, 180))
+        input_image = tf.keras.utils.load_img(image_path, target_size=(224, 224))
         input_image_array = tf.keras.utils.img_to_array(input_image)
         input_image_exp_dim = tf.expand_dims(input_image_array, 0)
 
@@ -66,10 +66,10 @@ if st.sidebar.button("Prediksi"):
                 else: 
                     label_color = third_color
 
-                st.sidebar.write(f"*Nama File:* {uploaded_file.name}")
+                st.sidebar.write(f"Nama File: {uploaded_file.name}")
                 st.sidebar.markdown(f"<h4 style='color: {label_color};'>Prediksi: {label}</h4>", unsafe_allow_html=True)
 
-                st.sidebar.write("*Confidence:*")
+                st.sidebar.write("Confidence:")
                 for i, class_name in enumerate(class_names):
                     st.sidebar.write(f"{class_name}: {confidence[i] * 100:.2f}%")
 
